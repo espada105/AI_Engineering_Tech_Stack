@@ -10,5 +10,4 @@ This repository is my playground for building up my tech stack as an AI engineer
 - UV
 - FastMCP
 - FastAPI
-- Docker
 - Temporal
