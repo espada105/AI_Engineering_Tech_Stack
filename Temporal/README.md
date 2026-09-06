@@ -20,4 +20,11 @@ Temporal은 장시간, 그리고 실패 가능성이 있는 업무 프로세스�
 services:
     temporal: 
         image: temporalio/temporal
-        
+
+
+2. activity는 실제 작업을 하는 함수다.
+
+3. workflow는 activity의 순서를 관리한다.
+- workflow안에서 직접 다운로드나 db저장을 하지 않고 activity를 실행하도록 요청하고 결과에 따라 다음에 뭘할지는 결정한다.
+
+4. worker는 시작할 때 자신이 실행가능한 workflow와 activity를 등록한다. 그리고 task queue라는 이름의 작업 대기열에서 작업을 받아 처리한다.
