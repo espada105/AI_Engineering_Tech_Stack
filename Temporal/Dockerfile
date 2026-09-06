@@ -1,19 +1,18 @@
 FROM python:3.13-slim AS builder
-WORKDIR /app
+WORKDIR /workspace
 COPY --from=ghcr.io/astral-sh/uv:0.8.17 /uv /uvx /bin/
-COPY pyproject.toml.uv.lock ./
+COPY pyproject.toml uv.lock ./
 RUN uv sync --locked --no-dev
 
 FROM python:3.13-slim
-WORKDIR /app
+WORKDIR /workspace
 COPY --from=builder /bin/uv /bin/uv
 COPY --from=builder /bin/uvx /bin/uvx
-COPY --from=builder /app/.venv /app/.venv
+COPY --from=builder /workspace/.venv /workspace/.venv
 
-COPY src/ /app/src/
+COPY app/ /workspace/app/
 
-ENV PATH = "/app/.venv/bin:$PATH"
-ENV PYTHONPATH = "/app/src"
-ENV PyTHONUNBUFFERED=1
+ENV PATH="/workspace/.venv/bin:$PATH"
+ENV PYTHONUNBUFFERED=1
 
-CMD ["python", "-m", "temporal_study.worker"]
+CMD ["python", "-m", "app.main"]
