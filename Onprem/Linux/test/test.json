@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "question": "현재 내가 위치해 있는 디렉토리의 절대 경로를 출력하는 명령어는?",
+        "answer": "pwd"
+    },
+    {
+        "id": 2,
+        "question": "현재 디렉토리의 파일 및 폴더 목록을 숨김 파일까지 포함하여 상세히 출력하는 명령어는?",
+        "answer": "ls -la"
+    },
+    {
+        "id": 3,
+        "question": "run.sh 파일에 실행 권한을 부여하는 가장 간단한 명령어는?",
+        "answer": "chmod +x run.sh"
+    },
+    {
+        "id": 4,
+        "question": "test.log 파일의 내용을 메모리 부담 없이 한 페이지씩 슬라이드하며 탐색하고 검색할 수 있는 명령어는?",
+        "answer": "less test.log"
+    },
+    {
+        "id": 5,
+        "question": "현재 실행 중인 프로세스 목록 중 python이 포함된 프로세스만 필터링하는 파이프 커맨드는?",
+        "answer": "ps aux | grep python"
+    },
+    {
+        "id": 6,
+        "question": "app.log 파일에서 ERROR라는 단어가 들어간 최신(맨 아래) 10줄만 출력하는 명령어는?",
+        "answer": "grep \"ERROR\" app.log | tail -n 10"
+    },
+    {
+        "id": 7,
+        "question": "dataset.tar.gz 압축 파일을 현재 디렉토리에 해제하는 명령어는?",
+        "answer": "tar -zxvf dataset.tar.gz"
+    },
+    {
+        "id": 8,
+        "question": "PID가 1234인 프로세스를 즉시 강제 종료하는 명령어는?",
+        "answer": "kill -9 1234"
+    },
+    {
+        "id": 9,
+        "question": "nvidia-smi 명령어를 1초 간격으로 계속 재실행하여 GPU 상태를 실시간 모니터링하는 명령어는?",
+        "answer": "watch -n 1 nvidia-smi"
+    },
+    {
+        "id": 10,
+        "question": "0번 GPU만 지정하여 train.py를 백그라운드에서 실행하고 모든 로그를 train.log에 저장하는 커맨드는?",
+        "answer": "CUDA_VISIBLE_DEVICES=0 nohup python train.py > train.log 2>&1 &"
+    }
+]
