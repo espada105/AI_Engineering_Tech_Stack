@@ -11,6 +11,25 @@ Temporal은 장시간, 그리고 실패 가능성이 있는 업무 프로세스�
 
 이번에 위성영상기반 지반침하를 구현하면서 좀 들여다보게 됐는데, TechStack에서 중요점으로 판단되어 Docs기반의 간단한 스터디를 진행한다. 
 
+-----------------------------------------------------------------
+흐름
+Client가 Workflow 시작 요청
+-> Temporal서버가 작업을 대기열에 등록
+-> Worker가 작업을 받아 코드 실행
+-> 실행 결과를  Temporal 서버에 전달
+-> CLient가 최종 결과 확인
+
+
+
+1. activity는 실제 작업을 하는 함수다.
+
+2. workflow는 activity의 순서를 관리한다.
+- workflow안에서 직접 다운로드나 db저장을 하지 않고 activity를 실행하도록 요청하고 결과에 따라 다음에 뭘할지는 결정한다.
+
+3. worker는 시작할 때 자신이 실행가능한 workflow와 activity를 등록한다. 그리고 task queue라는 이름의 작업 대기열에서 작업을 받아 처리한다.
+
+4. client는 python 스크립트일수도 있고, fastapi 같은 웹 서버에도 들어갈 수 있다.
+
 
 -----------------------------------------------------------------
 # MEMO
@@ -22,9 +41,3 @@ services:
         image: temporalio/temporal
 
 
-2. activity는 실제 작업을 하는 함수다.
-
-3. workflow는 activity의 순서를 관리한다.
-- workflow안에서 직접 다운로드나 db저장을 하지 않고 activity를 실행하도록 요청하고 결과에 따라 다음에 뭘할지는 결정한다.
-
-4. worker는 시작할 때 자신이 실행가능한 workflow와 activity를 등록한다. 그리고 task queue라는 이름의 작업 대기열에서 작업을 받아 처리한다.
